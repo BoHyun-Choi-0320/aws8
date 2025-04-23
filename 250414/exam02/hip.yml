@@ -1,0 +1,19 @@
+root@master-250410:~/mani/ingress# cp ip.yml hip.yml
+root@master-250410:~/mani/ingress# vi hip.yml 
+root@master-250410:~/mani/ingress# vi hip.yml 
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hnginx
+  template:
+    metadata:
+      name: hip-pod
+      labels:
+        app: hnginx
+    spec:
+      containers:
+      - name: hip-con
+        image: 61.254.18.30:5000/ipnginx
+

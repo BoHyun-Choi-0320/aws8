@@ -1,0 +1,6 @@
+#마스터 노드용 토큰
+kubeadm join 211.183.3.50:6443 --token 38c2k5.mjfc8sh6slx1mar2 --discovery-token-ca-cert-hash sha256:4cbdafa947854b1826d7a53a169ed55b280ac79a81444f600c9d5e97f33f2b3c --control-plane --certificate-key 99997a7109e61bedf3d8b96eb3d060d0d9c91037cfbba2043d354e31717ddcea --cri-socket unix:///run/containerd/containerd.sock 
+
+# 워커 노드용 토큰
+kubeadm join 211.183.3.50:6443 --token 38c2k5.mjfc8sh6slx1mar2 \
+	--discovery-token-ca-cert-hash sha256:4cbdafa947854b1826d7a53a169ed55b280ac79a81444f600c9d5e97f33f2b3c 

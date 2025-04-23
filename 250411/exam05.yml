@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-tom
+  namespace: ip-ns
+spec:
+  selector:
+    app: mytom
+  type: NodePort
+  ports:
+  - nodePort: 31000
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-mytom
+  namespace: ip-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mytom
+  template:
+    metadata:
+      labels:
+        app: mytom
+    spec:
+      containers:
+      - image: public.ecr.aws/docker/library/tomcat:10.1.40-jre11
+        name: mytom-con

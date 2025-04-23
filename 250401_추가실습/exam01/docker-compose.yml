@@ -1,0 +1,12 @@
+services:
+  nodeApp:
+    image: node:18.20.8-slim
+    ports:
+    - '8080:8080'
+    depends_on:
+    - dbdb
+
+  dbdb:
+    image: postgres:latest
+    ports:
+    - '5432:5432'

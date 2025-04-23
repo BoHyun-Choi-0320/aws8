@@ -1,0 +1,6 @@
+grafana:
+  adminUser: admin
+  adminPassword: "1234"
+
+  service:
+    type: NodePort

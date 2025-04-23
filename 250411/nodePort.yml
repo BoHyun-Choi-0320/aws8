@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ip-ns
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ipnginx
+  namespace: ip-ns
+spec:
+  selector:
+    app: myipnginx
+  type: NodePort
+  ports:
+  - nodePort: 32000
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-myipnginx
+  namespace: ip-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myipnginx
+  template:
+    metadata:
+      labels:
+        app: myipnginx
+    spec:
+      containers:
+      - image: oolralra/ipnginx
+        name: ipnginx-con

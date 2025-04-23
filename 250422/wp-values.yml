@@ -1,0 +1,18 @@
+image:
+  registry: public.ecr.aws
+  tag: latest
+
+global:
+  security:
+    allowInsecureImages: true
+
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: '1234'
+    database: wpdb
+    username: wpuser
+    password: '1234'
+
+
+    
