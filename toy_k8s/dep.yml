@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-nginx-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hpa-nginx
+  template:
+    metadata:
+      labels:
+        app: hpa-nginx
+    spec:
+      containers:
+      - image: 61.254.18.30:5000/nginx
+        name: nginx-con
+        ports:
+        - containerPort: 80 # 해당 부분을 설정하지 않으면 sidecar 에러가 발생할 수 있음
+        # istio-proxy가 라우팅을 해주려면 Pod의 container에 포트를 알아야 하기 때문

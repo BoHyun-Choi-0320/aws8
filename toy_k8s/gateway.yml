@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: demo  # ← 애플리케이션 서비스가 있는 네임스페이스
+spec:
+  selector:
+    istio: ingressgateway  # ← istio-ingressgateway deployment에 있는 selector 기준
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
