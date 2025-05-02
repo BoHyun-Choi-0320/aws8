@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wad-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: was
+  template:
+    metadata:
+      labels:
+        appp: was
+    spec:
+      containers:
+      - image: public.ecr.aws/docker/library/tomcat:10.1.40-jre11
+        name: was-con

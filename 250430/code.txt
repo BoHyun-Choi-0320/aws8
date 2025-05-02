@@ -1,0 +1,1 @@
+kubectl create deploy test --image=oolralra/ipnginx --replicas=1
